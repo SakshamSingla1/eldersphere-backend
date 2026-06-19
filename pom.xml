@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+         https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- ================================================================
+         SPRING BOOT PARENT — single source of truth for Boot version
+         ================================================================ -->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.4.5</version>
+        <relativePath/>
+    </parent>
+
+    <!-- ================================================================
+         PARENT COORDINATES
+         ================================================================ -->
+    <groupId>com.eldersphere</groupId>
+    <artifactId>eldersphere-parent</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>ElderSphere Parent</name>
+    <description>Parent POM for the ElderSphere elder care platform</description>
+
+    <!-- ================================================================
+         MODULES
+         ================================================================ -->
+    <modules>
+        <module>eldersphere-core</module>
+        <module>eldersphere-user-api</module>
+        <module>eldersphere-admin-api</module>
+    </modules>
+
+    <!-- ================================================================
+         GLOBAL PROPERTIES
+         ================================================================ -->
+    <properties>
+        <java.version>17</java.version>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <!-- Third-party library versions (NOT managed by Spring Boot) -->
+        <jjwt.version>0.11.5</jjwt.version>
+        <mapstruct.version>1.5.5.Final</mapstruct.version>
+        <springdoc.version>2.5.0</springdoc.version>
+        <firebase.version>9.2.0</firebase.version>
+        <razorpay.version>1.4.5</razorpay.version>
+        <awssdk.version>2.25.40</awssdk.version>
+        <paho.mqtt.version>1.2.5</paho.mqtt.version>
+        <openhtmltopdf.version>1.0.10</openhtmltopdf.version>
+        <poi.version>5.2.5</poi.version>
+        <bucket4j.version>8.10.1</bucket4j.version>
+    </properties>
+
+    <!-- ================================================================
+         DEPENDENCY MANAGEMENT
+         All versions declared here — child modules omit <version> tags
+         ================================================================ -->
+    <dependencyManagement>
+        <dependencies>
+
+            <!-- ── ElderSphere Core (shared library) ─────────────────── -->
+            <dependency>
+                <groupId>com.eldersphere</groupId>
+                <artifactId>eldersphere-core</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <!-- ── JWT (jjwt) ─────────────────────────────────────────── -->
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt-api</artifactId>
+                <version>${jjwt.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt-impl</artifactId>
+                <version>${jjwt.version}</version>
+                <scope>runtime</scope>
+            </dependency>
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt-jackson</artifactId>
+                <version>${jjwt.version}</version>
+                <scope>runtime</scope>
+            </dependency>
+
+            <!-- ── MapStruct ──────────────────────────────────────────── -->
+            <dependency>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct</artifactId>
+                <version>${mapstruct.version}</version>
+            </dependency>
+
+            <!-- ── SpringDoc OpenAPI ──────────────────────────────────── -->
+            <dependency>
+                <groupId>org.springdoc</groupId>
+                <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+                <version>${springdoc.version}</version>
+            </dependency>
+
+            <!-- ── Firebase Admin SDK ─────────────────────────────────── -->
+            <dependency>
+                <groupId>com.google.firebase</groupId>
+                <artifactId>firebase-admin</artifactId>
+                <version>${firebase.version}</version>
+            </dependency>
+
+            <!-- ── Razorpay ───────────────────────────────────────────── -->
+            <dependency>
+                <groupId>com.razorpay</groupId>
+                <artifactId>razorpay-java</artifactId>
+                <version>${razorpay.version}</version>
+            </dependency>
+
+            <!-- ── AWS SDK v2 (S3) ────────────────────────────────────── -->
+            <dependency>
+                <groupId>software.amazon.awssdk</groupId>
+                <artifactId>bom</artifactId>
+                <version>${awssdk.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- ── Eclipse Paho MQTT ──────────────────────────────────── -->
+            <dependency>
+                <groupId>org.eclipse.paho</groupId>
+                <artifactId>org.eclipse.paho.client.mqttv3</artifactId>
+                <version>${paho.mqtt.version}</version>
+            </dependency>
+
+            <!-- ── openhtmltopdf (PDF generation) ────────────────────── -->
+            <dependency>
+                <groupId>com.openhtmltopdf</groupId>
+                <artifactId>openhtmltopdf-pdfbox</artifactId>
+                <version>${openhtmltopdf.version}</version>
+            </dependency>
+
+            <!-- ── Apache POI (Excel export) ─────────────────────────── -->
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi-ooxml</artifactId>
+                <version>${poi.version}</version>
+            </dependency>
+
+            <!-- ── Bucket4j (rate limiting via Redis) ────────────────── -->
+            <dependency>
+                <groupId>com.bucket4j</groupId>
+                <artifactId>bucket4j-core</artifactId>
+                <version>${bucket4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.bucket4j</groupId>
+                <artifactId>bucket4j-redis</artifactId>
+                <version>${bucket4j.version}</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+    <!-- ================================================================
+         DEPENDENCIES COMMON TO ALL MODULES
+         ================================================================ -->
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <!-- ================================================================
+         BUILD — compiler plugin with Lombok + MapStruct processor order
+         CRITICAL: lombok MUST come before mapstruct-processor
+         ================================================================ -->
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <configuration>
+                        <source>${java.version}</source>
+                        <target>${java.version}</target>
+                        <annotationProcessorPaths>
+                            <!-- Lombok FIRST — mapstruct needs it -->
+                            <path>
+                                <groupId>org.projectlombok</groupId>
+                                <artifactId>lombok</artifactId>
+                            </path>
+                            <path>
+                                <groupId>org.mapstruct</groupId>
+                                <artifactId>mapstruct-processor</artifactId>
+                                <version>${mapstruct.version}</version>
+                            </path>
+                        </annotationProcessorPaths>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+</project>

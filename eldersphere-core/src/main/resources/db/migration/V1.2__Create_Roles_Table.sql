@@ -1,0 +1,11 @@
+CREATE TABLE roles (
+    id          BIGINT      NOT NULL AUTO_INCREMENT,
+    name        VARCHAR(50) NOT NULL,
+    description TEXT,
+    created_at  TIMESTAMP(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
+    updated_at  TIMESTAMP(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6),
+    created_by  BIGINT,
+    updated_by  BIGINT,
+    PRIMARY KEY (id),
+    CONSTRAINT uq_roles_name UNIQUE (name)
+);
