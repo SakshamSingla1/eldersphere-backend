@@ -1,0 +1,20 @@
+CREATE TABLE addresses (
+    id            BIGINT       NOT NULL AUTO_INCREMENT,
+    user_id       BIGINT       NOT NULL,
+    address_line1 VARCHAR(255) NOT NULL,
+    address_line2 VARCHAR(255),
+    city          VARCHAR(100) NOT NULL,
+    state         VARCHAR(100),
+    pincode       VARCHAR(10),
+    country       VARCHAR(100) NOT NULL DEFAULT 'India',
+    latitude      DECIMAL(10, 8),
+    longitude     DECIMAL(11, 8),
+    created_at    TIMESTAMP(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
+    updated_at    TIMESTAMP(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6),
+    created_by    BIGINT,
+    updated_by    BIGINT,
+    PRIMARY KEY (id),
+    CONSTRAINT fk_addresses_user    FOREIGN KEY (user_id)    REFERENCES users (id) ON DELETE CASCADE,
+    CONSTRAINT fk_addresses_created FOREIGN KEY (created_by) REFERENCES users (id) ON DELETE SET NULL,
+    CONSTRAINT fk_addresses_updated FOREIGN KEY (updated_by) REFERENCES users (id) ON DELETE SET NULL
+);

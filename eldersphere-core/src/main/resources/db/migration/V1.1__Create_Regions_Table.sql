@@ -1,0 +1,12 @@
+CREATE TABLE regions (
+    id         BIGINT       NOT NULL AUTO_INCREMENT,
+    name       VARCHAR(100) NOT NULL,
+    state      VARCHAR(100),
+    country    VARCHAR(100) NOT NULL DEFAULT 'India',
+    is_active  BOOLEAN      NOT NULL DEFAULT TRUE,
+    created_at TIMESTAMP(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
+    updated_at TIMESTAMP(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6),
+    created_by BIGINT,
+    updated_by BIGINT,
+    PRIMARY KEY (id)
+);
