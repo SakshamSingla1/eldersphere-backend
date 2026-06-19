@@ -86,6 +86,12 @@
             <artifactId>bucket4j-redis</artifactId>
         </dependency>
 
+        <!-- ── ModelMapper ───────────────────────────────────────────── -->
+        <dependency>
+            <groupId>org.modelmapper</groupId>
+            <artifactId>modelmapper</artifactId>
+        </dependency>
+
         <!-- ── Test ──────────────────────────────────────────────────── -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
