@@ -46,7 +46,7 @@
         <!-- Third-party library versions (NOT managed by Spring Boot) -->
         <jjwt.version>0.11.5</jjwt.version>
         <mapstruct.version>1.5.5.Final</mapstruct.version>
-        <springdoc.version>2.5.0</springdoc.version>
+        <springdoc.version>2.7.0</springdoc.version>
         <firebase.version>9.2.0</firebase.version>
         <razorpay.version>1.4.5</razorpay.version>
         <awssdk.version>2.25.40</awssdk.version>
@@ -54,6 +54,8 @@
         <openhtmltopdf.version>1.0.10</openhtmltopdf.version>
         <poi.version>5.2.5</poi.version>
         <bucket4j.version>8.10.1</bucket4j.version>
+        <totp.version>1.7.1</totp.version>
+        <modelmapper.version>3.1.1</modelmapper.version>
     </properties>
 
     <!-- ================================================================
@@ -157,6 +159,20 @@
                 <groupId>com.bucket4j</groupId>
                 <artifactId>bucket4j-redis</artifactId>
                 <version>${bucket4j.version}</version>
+            </dependency>
+
+            <!-- ── TOTP (Two-Factor Authentication) ──────────────────── -->
+            <dependency>
+                <groupId>dev.samstevens.totp</groupId>
+                <artifactId>totp</artifactId>
+                <version>${totp.version}</version>
+            </dependency>
+
+            <!-- ── ModelMapper ────────────────────────────────────────────────────────── -->
+            <dependency>
+                <groupId>org.modelmapper</groupId>
+                <artifactId>modelmapper</artifactId>
+                <version>${modelmapper.version}</version>
             </dependency>
 
         </dependencies>
